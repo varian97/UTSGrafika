@@ -22,6 +22,7 @@ FramePanel panelBig(500, 500, 500, 0);
 FramePanel panelMiniMap(100, 100, 250, 600);
 
 void *controller(void *args){
+    initscr();
     while(1){
         char c;
         c = getchar();
@@ -69,6 +70,7 @@ void *controller(void *args){
             break;
         }
     }
+    endwin();
 }
 
 void drawTree(){
@@ -141,11 +143,11 @@ int main(int argc, char** argv){
     pthread_create(&t_bullet, NULL, controller, NULL);
     while(1){
         //Draw Bangunan
-        if(bBuilding){   
+        if(bBuilding){
             drawBuilding();
         }
 
-        if(bTree){   
+        if(bTree){
             //Draw Tree 
             drawTree();
         }

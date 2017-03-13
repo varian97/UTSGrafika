@@ -1,25 +1,37 @@
-
+#include <ncurses.h>
 #include <iostream>
 #include "poligon.h"
 #include "parser.h"
 
 
+FramePanel panelSmall(100, 100, 50, 50);
+FramePanel panelMain(550, 500, 0, 0);
+FramePanel panelBig(500, 500, 550, 0);
+FramePanel panelMiniMap(100, 100, 250, 600);
+Framebuffer fp;
+
+void drawPesawat(Point center) {
+    std::vector<Point> points;
+    points.push_back(*(new Point (center.getX()+2, center.getY()+2)));
+    points.push_back(*(new Point (center.getX()+2, center.getY()-2)));
+    points.push_back(*(new Point (center.getX()-2, center.getY()+2)));
+    points.push_back(*(new Point (center.getX()-2, center.getY()-2)));
+
+    Poligon Pesawat = Poligon();
+    Pesawat.makeLineFromArrPoint(points);
+    Pesawat.drawInside(&panelSmall, &panelBig);
+}
 
 int main(int argc, char** argv){
-    FramePanel panelSmall(100, 100, 50, 50);
-    FramePanel panelMain(550, 500, 0, 0);
-    FramePanel panelBig(500, 500, 550, 0);
-    FramePanel panelMiniMap(100, 100, 250, 600);
-    Framebuffer fp;
     Parser parse;
     parse.parseAdi("bangunan.txt");
     parse.parseTree("tree.txt");
     std::vector<Poligon> vPoligon;
-    std::vector<std::vector<Point>> v;
+    std::vector<std::vector<Point> > v;
     v = parse.getPoints();
     Parser parse2;
     parse2.parseAdi("jalan.txt");
-    std::vector<std::vector<Point>> PJalan;
+    std::vector<std::vector<Point> > PJalan;
     PJalan = parse2.getPoints();
 
     cout << vPoligon.size() << endl;
@@ -28,9 +40,10 @@ int main(int argc, char** argv){
     bool tree, build, road;
     tree = build = road = false;
     
+    initscr();
     while(1){
         char inp;
-        cin >> inp;
+        inp = getchar();
         if(inp == 'a'){
             if(panelSmall.getXMin() > 10){
                 panelSmall.setXMin(panelSmall.getXMin() - 10);
@@ -75,7 +88,7 @@ int main(int argc, char** argv){
             }
         }
         if(build){ 
-            //Draw Bangunan
+            //Draw Bangunan 
             for(int i = 0; i < v.size(); i++){
                 Poligon Shape = Poligon();
                 Shape.makeLineFromArrPoint(v[i]);
@@ -85,7 +98,7 @@ int main(int argc, char** argv){
         }
 
         if(tree){
-            //Draw Tree
+            //Draw Tree 
             std::vector<Point> PTree;
             PTree = parse.getTrees(); 
             for(int i = 0; i < PTree.size(); i++){
@@ -97,7 +110,7 @@ int main(int argc, char** argv){
         }
 
         if(road){
-            //draw Jalan
+            //draw Jalan 
             for(int i = 0; i < PJalan.size(); i++){
                 Poligon Shape = Poligon();
                 Shape.makeLineFromArrPoint(PJalan[i]);
@@ -120,6 +133,7 @@ int main(int argc, char** argv){
         for(int i = 0; i<size;i++){
             vPoligon[i].drawInside(&panelSmall, &panelBig);
         }
+        drawPesawat(*(new Point(panelSmall.getXMin()+50, panelSmall.getYMin()+50)));
         fp.drawFrame(panelMain);
         fp.drawFrame(panelMiniMap);
         fp.drawFrame(panelBig);
@@ -130,6 +144,7 @@ int main(int argc, char** argv){
         panelBig.EmptyFrame();
         vPoligon.clear();
     }
+    endwin();    
 
     return 0;
 }
