@@ -715,7 +715,9 @@ int playUFO(int stage) {
     int xawal = 100, yawal = 574;
     bool left = true;
     bool up = true;
-    
+    char ch;     
+    int acc = 1;
+    int rand123 = 1;
     do {
         clearMatrix();
         drawFrame();
@@ -726,7 +728,7 @@ int playUFO(int stage) {
         // draw UFO
         drawUFO(xawal, yawal);
         bool y_double;
-        if(stage == 2){
+        if(stage == 2){ // kaya biasa
             if(yawal-170<=0) {
                 left = false;
             } else if(yawal+200>=1200) {
@@ -739,7 +741,7 @@ int playUFO(int stage) {
             }
             int deltaY = yawal - yp;
             xawal = 600 - sqrt(250000 - pow(deltaY, 2));
-        } else if (stage == 1) {
+        } else if (stage == 3) { // mantul2 ga jelas
             if (yawal - 75 <= 0) {
                 left = false;
             } else if(yawal + 100 >= 1200) {
@@ -761,6 +763,31 @@ int playUFO(int stage) {
             } else {
                 xawal += 15;     
             }        
+        } else if (stage == 4) {    // Mantul2, lama2 tambah cepet
+            if (yawal - 150 <= 0) {
+                left = false;
+            } else if(yawal + 100 >= 1200) {
+                left = true;
+            }
+            if (left) {
+                yawal -= 10 + acc;   if (acc < 75) { acc++; }
+            } else {
+                yawal += 10 + acc;   if (acc < 75) { acc++; }  
+            }
+
+            if (xawal <= 75) {
+                up = false;
+            } else if(xawal >= 400) {
+                up = true;
+            }
+            if (up) {
+                xawal -= 10 + acc;   if (acc < 75) { acc++; }
+
+            } else {
+                xawal += 10 + acc;   if (acc < 75) { acc++; }
+            }  
+        } else if (stage == 1) {
+            // bingung
         }
         
         
