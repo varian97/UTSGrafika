@@ -13,6 +13,7 @@
 #include <thread>
 #include <vector>
 
+
 using namespace std;
 
 #define HEIGHT 1250
@@ -672,7 +673,8 @@ void drawBullets() {
     }
 }
 
-int main() {
+int playUFO(int stage) {
+    system("clear");
     clearMatrix();    
     
     int fbfd = 0;
@@ -722,28 +724,32 @@ int main() {
 
         // draw UFO
         drawUFO(xawal, yawal);
-        if(yawal-170<=0) {
-            left = false;
-        } else if(yawal+200>=1200) {
-            left = true;
+
+        if(stage == 1){
+            if(yawal-170<=0) {
+                left = false;
+            } else if(yawal+200>=1200) {
+                left = true;
+            }
+            if (left) {
+                yawal -= 10;
+            } else {
+                yawal += 10;     
+            }
+            int deltaY = yawal - yp;
+            xawal = 600 - sqrt(250000 - pow(deltaY, 2));
         }
-        if (left) {
-            yawal -= 10;
-        } else {
-            yawal += 10;     
-        }
-        int deltaY = yawal - yp;
-        xawal = 600 - sqrt(250000 - pow(deltaY, 2));
+        
         
         // draw bullet
         drawBullets(); 
 
         DrawToScreen(); 
         usleep(50000);
-    } while (KeyPressed!='C' && !exploded);
+    } while (!exploded);
     thread1.detach();
 	
-	int xawal1 = xawal;
+	/*int xawal1 = xawal;
 	int xawal2 = xawal;
 	int yawal1 = yawal;
 	int yawal2 = yawal;
@@ -755,16 +761,6 @@ int main() {
 		drawFrame();
 		drawShooter(xp,yp,lastCorrectState);
 		drawStars();
-		/*
-		drawExplosion2(xawal,yawal);
-		drawExplosion2(xawal1,yawal1);
-		drawExplosion2(xawal2,yawal2);
-		drawExplosion2(xawal2,yawal3);
-		drawExplosion2(xawal2,yawal4);
-		*/
-		//drawPropeller(xawal, yawal2, angle);
-		//angle+= 15;
-
 
 		DrawToScreen();
 		xawal++; xawal1++; xawal2++;
@@ -775,10 +771,10 @@ int main() {
 			yawal4 -= 2;
 		}
 		usleep(1);
-	}
+	}*/
     
     munmap(fbp, screensize);
     close(fbfd);
-    
+
     return 0;
 }

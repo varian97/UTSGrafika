@@ -5,21 +5,10 @@
 #include <list>
 #include "Cannon.h"
 #include "Pesawat.h"
+#include "../rapih.cpp"
 
 
 using namespace std;
-Pesawat p;
-Cannon c;
-void movePesawat() {
-    p.init();
-    p.move();
-}
-
-void moveCannon() {
-    c.init();
-    c.move();
-}
-
 
 double getRatio(int x) {
 	double ret = (double) x/417;
@@ -34,64 +23,6 @@ void drawTree(int x, int y, list<LineDetails*> listLine) {
 	listLine.push_back(new LineDetails(getRatio(x), getRatio(y-6), getRatio(x+3), getRatio(y)));
 	listLine.push_back(new LineDetails(getRatio(x+3), getRatio(y), getRatio(x-3), getRatio(y)));
 	//cout<<listLine.back()<<endl;
-}
-int playPesawat() {
-  system("clear");
-  /* Bullet */
-  LinePes bullet;
-  int xbullet;
-  int y1bullet = 550;
-  int y2bullet = 500;
-  system("clear"); 
-
-  /* thread pesawat */
-  thread fly(movePesawat);
-  thread sail(moveCannon);
-
-  /* User press enter then the cannon will attack */
-  while(1) {
-  //while(!p.getIsDestroy()) {
-      int ch = getch();
-      if(ch == 'f'){
-          xbullet = c.getInitBulletLocation();
-          bullet.insertLinePes(xbullet,y1bullet,xbullet,y2bullet,255,0,0);
-          while(y2bullet > 0){
-              bullet.insertLinePes(xbullet,y1bullet,xbullet,y2bullet,0,0,0);
-              y1bullet -= 20;
-              y2bullet -= 20;
-              bullet.insertLinePes(xbullet,y1bullet,xbullet,y2bullet,255,0,0);
-
-              // collision checking
-              if( (y2bullet <= 250) && (xbullet > p.getXFront() && xbullet < p.getXBehind()) && !p.getIsDestroy() ){
-                c.setCannonToStop();
-                p.clean(xbullet,xbullet,y2bullet,y1bullet);
-                p.setDestroy();               
-		usleep(3000000);
-		
-  fly.detach();
-  sail.detach();
-system("clear");
-return 0;
-                break;
-              }
-
-              usleep(90000);
-          }
-          bullet.insertLinePes(xbullet,y1bullet,xbullet,y2bullet,0,0,0);
-          xbullet = c.getInitBulletLocation();
-          y1bullet = 550;
-          y2bullet = 500;
-      }
-  }
-
-  sleep(1);
-  system("clear");
-  cout<<"depan"<<p.getXFront()<<endl;
-  cout<<"blkg"<<p.getXBehind()<<endl;
-
-  fly.detach();
-  sail.detach();
-	return 0;
 }
 
 int main() {
@@ -377,8 +308,9 @@ int main() {
 		break;
 		
 		case 'e':
-			playPesawat();
-		break;
+			system("clear");
+			playUFO(1);
+			system("clear");
 		}
 		refresh();
 	}
