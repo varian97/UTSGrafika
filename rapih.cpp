@@ -714,6 +714,7 @@ int playUFO(int stage) {
 
     int xawal = 100, yawal = 574;
     bool left = true;
+    bool up = true;
     
     do {
         clearMatrix();
@@ -724,8 +725,8 @@ int playUFO(int stage) {
 
         // draw UFO
         drawUFO(xawal, yawal);
-
-        if(stage == 1){
+        bool y_double;
+        if(stage == 2){
             if(yawal-170<=0) {
                 left = false;
             } else if(yawal+200>=1200) {
@@ -738,6 +739,28 @@ int playUFO(int stage) {
             }
             int deltaY = yawal - yp;
             xawal = 600 - sqrt(250000 - pow(deltaY, 2));
+        } else if (stage == 1) {
+            if (yawal - 75 <= 0) {
+                left = false;
+            } else if(yawal + 100 >= 1200) {
+                left = true;
+            }
+            if (left) {
+                yawal -= 20;
+            } else {
+                yawal += 30;     
+            }
+
+            if (xawal <= 75) {
+                up = false;
+            } else if(xawal >= 400) {
+                up = true;
+            }
+            if (up) {
+                xawal -= 5;
+            } else {
+                xawal += 15;     
+            }        
         }
         
         

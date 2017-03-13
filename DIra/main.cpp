@@ -219,20 +219,20 @@ int main() {
 		break;
 		case 'w':
 		//smallScreen.renderSmall(listLine, zoomScreen, bigScreen,0,0,0);
-		  if (ya>0) {
-		  ya--;
-		  zoomScreen.renderBorderCol(0,0,0);
-		  zoomScreen.changeOrigin(xa,ya);
-		  zoomScreen.renderBorder();
-		  }
+			if (ya>0) {
+			ya--;
+			zoomScreen.renderBorderCol(0,0,0);
+			zoomScreen.changeOrigin(xa,ya);
+			zoomScreen.renderBorder();
+			}
 		break;
 		case 's':
 		//smallScreen.renderSmall(listLine, zoomScreen, bigScreen,0,0,0);
-		  if (ya+zoomScreenHeight<bigScreenHeight) {
-		  ya++;
-		  zoomScreen.renderBorderCol(0,0,0);
-		  zoomScreen.changeOrigin(xa,ya);
-		  zoomScreen.renderBorder();
+			if (ya+zoomScreenHeight<bigScreenHeight) {
+			ya++;
+			zoomScreen.renderBorderCol(0,0,0);
+			zoomScreen.changeOrigin(xa,ya);
+			zoomScreen.renderBorder();
 		  }		
 		break;
 		case 'i':
