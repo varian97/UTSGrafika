@@ -826,5 +826,5 @@ int playUFO(int stage) {
     munmap(fbp, screensize);
     close(fbfd);
 
-    return 0;
+    return stage;
 }

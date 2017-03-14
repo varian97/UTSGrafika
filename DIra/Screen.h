@@ -28,6 +28,19 @@ class Screen {
 			this->height = height;
 			this->lineManager = Line();
 		}
+		//GETTER ORIGIN
+		int getOriginX(){
+			return this->originX;		
+		}
+		int getOriginY(){
+			return this->originY;
+		}
+		int getWidth(){
+			return this->width;		
+		}
+		int getHeight(){
+			return this->height;
+		}
 		//Function for change the origin
 		void changeOrigin(int originX, int originY) {
 			this->originX = originX;
