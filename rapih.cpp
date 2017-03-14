@@ -12,7 +12,7 @@
 #include <math.h>
 #include <thread>
 #include <vector>
-
+#include "ncurses.h"
 
 using namespace std;
 
@@ -638,21 +638,21 @@ void addBullet(int x1, int y1, int x2, int y2 , int n)
 }
 
 void drawKeyShooter(){
+    initscr();
+    noecho();
     while(!exploded){
-        if(!detectKeyStroke()) {
-                char KeyPressed = getchar();
-                if ((KeyPressed=='A')||(KeyPressed=='a') ||(KeyPressed=='S') ||(KeyPressed=='s') ||(KeyPressed=='D') ||(KeyPressed=='d')) {
-                    lastCorrectState = KeyPressed;
-                } else if (KeyPressed==' ') {
+        char KeyPressed = getch();
+        if ((KeyPressed=='A')||(KeyPressed=='a') ||(KeyPressed=='S') ||(KeyPressed=='s') ||(KeyPressed=='D') ||(KeyPressed=='d')) {
+            lastCorrectState = KeyPressed;
+        } else if (KeyPressed==' ') {
 
-                    if (lastCorrectState == 'a')
-                        addBullet(posY,posX,0,0,20);
-                    else if (lastCorrectState == 's')
-                        addBullet(posY,posX,0,600,20);
-                    else if (lastCorrectState == 'd')
-                        addBullet(posY,posX,0,1200,20);
-                
-            }
+            if (lastCorrectState == 'a')
+                addBullet(posY,posX,0,0,20);
+            else if (lastCorrectState == 's')
+                addBullet(posY,posX,0,600,20);
+            else if (lastCorrectState == 'd')
+                addBullet(posY,posX,0,1200,20);
+        
         }
     }
         
@@ -810,7 +810,8 @@ int playUFO(int stage) {
         DrawToScreen(); 
         usleep(50000);
     } while (!exploded);
-    thread1.join();
+    // thread1.detach();
+    thread1.detach();
     bullets.clear();
 	
 	/*int xawal1 = xawal;
