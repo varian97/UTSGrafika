@@ -229,6 +229,7 @@ int main() {
 	}
 	filestage4.close();
 
+
         int* tempstage4 = new int[4];
 
 	int loopstage4 = 0;
@@ -240,6 +241,31 @@ int main() {
 			loopstage4 = 0;
 		}
 	}
+
+	list<LineDetails*> listEnding;
+	fstream fileEnding("Congrats.txt", std::ios_base::in);
+	list<int> intListEnding;
+
+	int moveending;
+//	Line lineManager;
+   	while (fileEnding >> moveending){
+		intListEnding.push_back(moveending);
+		//cout<<yow<<endl;
+	}
+	fileEnding.close();
+
+	int* tempending = new int[4];
+
+	int loopending = 0;
+    	for (std::list<int>::iterator it = intListEnding.begin(); it != intListEnding.end(); ++it) {
+		tempending[loopending] = *it;
+		loopending++;
+		if (loopending == 4) {
+			listEnding.push_back(new LineDetails(getRatio(tempending[0]), getRatio(tempending[1]), getRatio(tempending[2]), getRatio(tempending[3])));
+			loopending = 0;
+		}
+	}
+
 
 	int stages[5];
 	stages[0]=0;
@@ -782,38 +808,46 @@ int main() {
 					playUFO(4);
 					stages[3]=1;
 					//CLEAR ALL THE STAGE
-					system("clear");
-					stageMapX[0]=rand()%bigScreenWidth;
-					stageMapX[1]=rand()%bigScreenWidth;
-					stageMapX[2]=rand()%bigScreenWidth;
-					stageMapX[3]=rand()%bigScreenWidth;
-					stageMapX[4]=rand()%bigScreenWidth;
-					stageMapY[0]=rand()%bigScreenHeight;
-					stageMapY[1]=rand()%bigScreenHeight;
-					stageMapY[2]=rand()%bigScreenHeight;
-					stageMapY[3]=rand()%bigScreenHeight;
-					stageMapY[4]=rand()%bigScreenHeight;
-					listStageMap = list<LineDetails*>() ;
-					loopx=0;
+					// system("clear");
+					// stageMapX[0]=rand()%bigScreenWidth;
+					// stageMapX[1]=rand()%bigScreenWidth;
+					// stageMapX[2]=rand()%bigScreenWidth;
+					// stageMapX[3]=rand()%bigScreenWidth;
+					// stageMapX[4]=rand()%bigScreenWidth;
+					// stageMapY[0]=rand()%bigScreenHeight;
+					// stageMapY[1]=rand()%bigScreenHeight;
+					// stageMapY[2]=rand()%bigScreenHeight;
+					// stageMapY[3]=rand()%bigScreenHeight;
+					// stageMapY[4]=rand()%bigScreenHeight;
+					// listStageMap = list<LineDetails*>() ;
+					// loopx=0;
 
-					for (int it = 0; it <4; it++) {
-						for (int it = 0; it <4; it++) {
-							int stage_increment = 0;
-							for (int i_it = 0; i_it <= it; i_it++ ){
-								listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]+stage_increment), getRatio(stageMapX[it]+5), getRatio(stageMapY[it]+stage_increment)));
-								stage_increment += 2;
-							}
-						}
+					// for (int it = 0; it <4; it++) {
+					// 	for (int it = 0; it <4; it++) {
+					// 		int stage_increment = 0;
+					// 		for (int i_it = 0; i_it <= it; i_it++ ){
+					// 			listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]+stage_increment), getRatio(stageMapX[it]+5), getRatio(stageMapY[it]+stage_increment)));
+					// 			stage_increment += 2;
+					// 		}
+					// 	}
 
-						listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]-2), getRatio(stageMapX[it]+4), getRatio(stageMapY[it]-2)));
-						listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]-2), getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3)));
-						listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3)));
-						listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+4), getRatio(stageMapY[it]-2)));
-						listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-4)));
-						listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-4), getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3)));
-						listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-4), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-4)));
+					// 	listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]-2), getRatio(stageMapX[it]+4), getRatio(stageMapY[it]-2)));
+					// 	listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]-2), getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3)));
+					// 	listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3)));
+					// 	listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+4), getRatio(stageMapY[it]-2)));
+					// 	listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-4)));
+					// 	listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-4), getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3)));
+					// 	listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-4), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-4)));
+					// 
+					for(list<LineDetails*>::iterator it = listEnding.begin(); it != listEnding.end(); it++) {
+						printWords((*it),lineManager,100,100);
+						//cout<<*it<<endl;
+
 					}
+					usleep(100000000);
 					break;
+				
+					
 				case 'n' : system("clear");
 				}
 			} else {
