@@ -7,7 +7,7 @@
 FramePanel panelSmall(100, 100, 50, 50);
 FramePanel panelMain(550, 500, 0, 0);
 FramePanel panelBig(500, 500, 550, 0);
-FramePanel panelMiniMap(100, 100, 250, 600);
+FramePanel panelMiniMap(100, 100, 250, 400);
 Framebuffer fp;
 
 void drawPesawat(Point center) {
