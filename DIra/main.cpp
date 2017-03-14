@@ -7,7 +7,7 @@
 #include "Pesawat.h"
 #include <stdlib.h>
 #include <time.h>
-#include "../rapih.cpp"
+#include "rapih.cpp"
 
 
 using namespace std;
@@ -807,41 +807,9 @@ int main() {
 					system("clear");
 					playUFO(4);
 					stages[3]=1;
-					//CLEAR ALL THE STAGE
-					// system("clear");
-					// stageMapX[0]=rand()%bigScreenWidth;
-					// stageMapX[1]=rand()%bigScreenWidth;
-					// stageMapX[2]=rand()%bigScreenWidth;
-					// stageMapX[3]=rand()%bigScreenWidth;
-					// stageMapX[4]=rand()%bigScreenWidth;
-					// stageMapY[0]=rand()%bigScreenHeight;
-					// stageMapY[1]=rand()%bigScreenHeight;
-					// stageMapY[2]=rand()%bigScreenHeight;
-					// stageMapY[3]=rand()%bigScreenHeight;
-					// stageMapY[4]=rand()%bigScreenHeight;
-					// listStageMap = list<LineDetails*>() ;
-					// loopx=0;
-
-					// for (int it = 0; it <4; it++) {
-					// 	for (int it = 0; it <4; it++) {
-					// 		int stage_increment = 0;
-					// 		for (int i_it = 0; i_it <= it; i_it++ ){
-					// 			listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]+stage_increment), getRatio(stageMapX[it]+5), getRatio(stageMapY[it]+stage_increment)));
-					// 			stage_increment += 2;
-					// 		}
-					// 	}
-
-					// 	listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]-2), getRatio(stageMapX[it]+4), getRatio(stageMapY[it]-2)));
-					// 	listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]-2), getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3)));
-					// 	listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3)));
-					// 	listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+4), getRatio(stageMapY[it]-2)));
-					// 	listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-4)));
-					// 	listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-4), getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3)));
-					// 	listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-4), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-4)));
-					// 
+					
 					for(list<LineDetails*>::iterator it = listEnding.begin(); it != listEnding.end(); it++) {
 						printWords((*it),lineManager,100,100);
-						//cout<<*it<<endl;
 
 					}
 					usleep(100000000);
@@ -861,7 +829,6 @@ int main() {
 				//	Line lineManager;
 			   	while (filestage >> movestage1){
 					intListStage1.push_back(movestage1);
-					//cout<<yow<<endl;
 				}
 				filestage.close();
 
