@@ -45,6 +45,7 @@ int main() {
 	//PRINT OPENING
 	list<LineDetails*> listLineUFO;
 	fstream fileufo("UFOITB.txt", std::ios_base::in);
+	//fstream fileufo("notready.txt", std::ios_base::in);
 	list<int> intListUfo;
 
 	int yow;
@@ -767,8 +768,37 @@ int main() {
 					//listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+5), getRatio(stageMapY[it]), getRatio(stageMapX[it]), getRatio(stageMapY[it])+5));
 				}
 			} else {
-			//YOU'RE NOT READY
+				//YOU'RE NOT READYg
+				list<LineDetails*> listLineStage1;
+				fstream filestage("notready.txt", std::ios_base::in);
+				list<int> intListStage1;
 
+				int movestage1;
+				//	Line lineManager;
+			   	while (filestage >> movestage1){
+					intListStage1.push_back(movestage1);
+					//cout<<yow<<endl;
+				}
+				filestage.close();
+
+			    int* tempstage1 = new int[4];
+
+				int loopstage1 = 0;
+			    	for (std::list<int>::iterator it = intListStage1.begin(); it != intListStage1.end(); ++it) {
+					tempstage1[loopstage1] = *it;
+					loopstage1++;
+					if (loopstage1 == 4) {
+						listLineStage1.push_back(new LineDetails(getRatio(tempstage1[0]), getRatio(tempstage1[1]), getRatio(tempstage1[2]), getRatio(tempstage1[3])));
+						loopstage1 = 0;
+					}
+				}
+
+				system("clear");
+				for(list<LineDetails*>::iterator it = listLineStage1.begin(); it != listLineStage1.end(); it++) {
+					printWords((*it),lineManager,100,500);
+					//cout<<*it<<endl;
+				}
+				usleep(1000000);
 			}
 		}
 		refresh();
