@@ -613,37 +613,47 @@ int main() {
 				}
 				usleep(1000000);
 				system("clear");
-				playUFO(1);
-				stages[0]=1;
-				system("clear");
-				stageMapX[0]=rand()%bigScreenWidth;
-				stageMapX[1]=rand()%bigScreenWidth;
-				stageMapX[2]=rand()%bigScreenWidth;
-				stageMapX[3]=rand()%bigScreenWidth;
-				stageMapX[4]=rand()%bigScreenWidth;
-				stageMapY[0]=rand()%bigScreenHeight;
-				stageMapY[1]=rand()%bigScreenHeight;
-				stageMapY[2]=rand()%bigScreenHeight;
-				stageMapY[3]=rand()%bigScreenHeight;
-				stageMapY[4]=rand()%bigScreenHeight;
-				listStageMap = list<LineDetails*>() ;
-				loopx=0;
-				for (int it = 0; it <4; it++) {
-					for (int it = 0; it <4; it++) {
-						int stage_increment = 0;
-						for (int i_it = 0; i_it <= it; i_it++ ){
-							listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]+stage_increment), getRatio(stageMapX[it]+5), getRatio(stageMapY[it]+stage_increment)));
-							stage_increment += 2;
-						}
-					}
+				cout<<"You can't abort the mission! Continue? (Y/N)"<<endl;
+				char inYes = getch();
+				//smallScreen.renderSmall(listLine, zoomScreen, bigScreen,0,0,0);
 
-					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]-2), getRatio(stageMapX[it]+4), getRatio(stageMapY[it]-2)));
-					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]-2), getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3)));
-					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3)));
-					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+4), getRatio(stageMapY[it]-2)));
-					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-4)));
-					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-4), getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3)));
-					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-4), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-4)));
+				//mvaddch(ya,xa,ch);
+				switch(inYes){
+				case 'y':
+					playUFO(1);
+					stages[0]=1;
+					system("clear");
+					stageMapX[0]=rand()%bigScreenWidth;
+					stageMapX[1]=rand()%bigScreenWidth;
+					stageMapX[2]=rand()%bigScreenWidth;
+					stageMapX[3]=rand()%bigScreenWidth;
+					stageMapX[4]=rand()%bigScreenWidth;
+					stageMapY[0]=rand()%bigScreenHeight;
+					stageMapY[1]=rand()%bigScreenHeight;
+					stageMapY[2]=rand()%bigScreenHeight;
+					stageMapY[3]=rand()%bigScreenHeight;
+					stageMapY[4]=rand()%bigScreenHeight;
+					listStageMap = list<LineDetails*>() ;
+					loopx=0;
+					for (int it = 0; it <4; it++) {
+						for (int it = 0; it <4; it++) {
+							int stage_increment = 0;
+							for (int i_it = 0; i_it <= it; i_it++ ){
+								listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]+stage_increment), getRatio(stageMapX[it]+5), getRatio(stageMapY[it]+stage_increment)));
+								stage_increment += 2;
+							}
+						}
+
+						listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]-2), getRatio(stageMapX[it]+4), getRatio(stageMapY[it]-2)));
+						listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]-2), getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3)));
+						listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3)));
+						listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+4), getRatio(stageMapY[it]-2)));
+						listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-4)));
+						listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-4), getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3)));
+						listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-4), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-4)));
+					}
+					break;
+				case 'n' : system("clear");
 				}
 			} else if (zoomScreen.getOriginX()<=stageMapX[1] && zoomScreen.getOriginX()+zoomScreen.getWidth()>=stageMapX[1] && zoomScreen.getOriginY()<=stageMapY[1] && zoomScreen.getOriginY()+zoomScreen.getHeight()>=stageMapY[1] && stages[0]==1) {
 				//YOU CAN'T ABORT THE MISSION
@@ -654,39 +664,51 @@ int main() {
 				}
 				usleep(1000000);
 				system("clear");
-				playUFO(2);
-				stages[1]=1;
-				system("clear");
-				stageMapX[0]=rand()%bigScreenWidth;
-				stageMapX[1]=rand()%bigScreenWidth;
-				stageMapX[2]=rand()%bigScreenWidth;
-				stageMapX[3]=rand()%bigScreenWidth;
-				stageMapX[4]=rand()%bigScreenWidth;
-				stageMapY[0]=rand()%bigScreenHeight;
-				stageMapY[1]=rand()%bigScreenHeight;
-				stageMapY[2]=rand()%bigScreenHeight;
-				stageMapY[3]=rand()%bigScreenHeight;
-				stageMapY[4]=rand()%bigScreenHeight;
-				listStageMap = list<LineDetails*>() ;
-				loopx=0;
+				cout<<"You can't abort the mission! Continue? (Y/N)"<<endl;
+				char inYes = getch();
+				//smallScreen.renderSmall(listLine, zoomScreen, bigScreen,0,0,0);
 
-				for (int it = 0; it <4; it++) {
+				//mvaddch(ya,xa,ch);
+				switch(inYes){
+				case 'y':
+					system("clear");
+					playUFO(2);
+					stages[1]=1;
+					system("clear");
+					stageMapX[0]=rand()%bigScreenWidth;
+					stageMapX[1]=rand()%bigScreenWidth;
+					stageMapX[2]=rand()%bigScreenWidth;
+					stageMapX[3]=rand()%bigScreenWidth;
+					stageMapX[4]=rand()%bigScreenWidth;
+					stageMapY[0]=rand()%bigScreenHeight;
+					stageMapY[1]=rand()%bigScreenHeight;
+					stageMapY[2]=rand()%bigScreenHeight;
+					stageMapY[3]=rand()%bigScreenHeight;
+					stageMapY[4]=rand()%bigScreenHeight;
+					listStageMap = list<LineDetails*>() ;
+					loopx=0;
+
 					for (int it = 0; it <4; it++) {
-						int stage_increment = 0;
-						for (int i_it = 0; i_it <= it; i_it++ ){
-							listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]+stage_increment), getRatio(stageMapX[it]+5), getRatio(stageMapY[it]+stage_increment)));
-							stage_increment += 2;
+						for (int it = 0; it <4; it++) {
+							int stage_increment = 0;
+							for (int i_it = 0; i_it <= it; i_it++ ){
+								listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]+stage_increment), getRatio(stageMapX[it]+5), getRatio(stageMapY[it]+stage_increment)));
+								stage_increment += 2;
+							}
 						}
-					}
 
-					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]-2), getRatio(stageMapX[it]+4), getRatio(stageMapY[it]-2)));
-					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]-2), getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3)));
-					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3)));
-					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+4), getRatio(stageMapY[it]-2)));
-					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-4)));
-					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-4), getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3)));
-					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-4), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-4)));
+						listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]-2), getRatio(stageMapX[it]+4), getRatio(stageMapY[it]-2)));
+						listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]-2), getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3)));
+						listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3)));
+						listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+4), getRatio(stageMapY[it]-2)));
+						listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-4)));
+						listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-4), getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3)));
+						listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-4), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-4)));
+					}
+					break;
+				case 'n' : system("clear");
 				}
+
 			} else if (zoomScreen.getOriginX()<=stageMapX[2] && zoomScreen.getOriginX()+zoomScreen.getWidth()>=stageMapX[2] && zoomScreen.getOriginY()<=stageMapY[2] && zoomScreen.getOriginY()+zoomScreen.getHeight()>=stageMapY[2] && stages[0]==1 && stages[1]==1) {
 				//YOU CAN'T ABORT THE MISSION
 				system("clear");
@@ -696,38 +718,49 @@ int main() {
 				}
 				usleep(1000000);
 				system("clear");
-				playUFO(3);
-				stages[2]=1;
-				system("clear");
-				stageMapX[0]=rand()%bigScreenWidth;
-				stageMapX[1]=rand()%bigScreenWidth;
-				stageMapX[2]=rand()%bigScreenWidth;
-				stageMapX[3]=rand()%bigScreenWidth;
-				stageMapX[4]=rand()%bigScreenWidth;
-				stageMapY[0]=rand()%bigScreenHeight;
-				stageMapY[1]=rand()%bigScreenHeight;
-				stageMapY[2]=rand()%bigScreenHeight;
-				stageMapY[3]=rand()%bigScreenHeight;
-				stageMapY[4]=rand()%bigScreenHeight;
-				listStageMap = list<LineDetails*>() ;
-				loopx=0;
+				cout<<"You can't abort the mission! Continue? (Y/N)"<<endl;
+				char inYes = getch();
+				//smallScreen.renderSmall(listLine, zoomScreen, bigScreen,0,0,0);
 
-				for (int it = 0; it <4; it++) {
+				//mvaddch(ya,xa,ch);
+				switch(inYes){
+				case 'y':
+					system("clear");
+					playUFO(3);
+					stages[2]=1;
+					system("clear");
+					stageMapX[0]=rand()%bigScreenWidth;
+					stageMapX[1]=rand()%bigScreenWidth;
+					stageMapX[2]=rand()%bigScreenWidth;
+					stageMapX[3]=rand()%bigScreenWidth;
+					stageMapX[4]=rand()%bigScreenWidth;
+					stageMapY[0]=rand()%bigScreenHeight;
+					stageMapY[1]=rand()%bigScreenHeight;
+					stageMapY[2]=rand()%bigScreenHeight;
+					stageMapY[3]=rand()%bigScreenHeight;
+					stageMapY[4]=rand()%bigScreenHeight;
+					listStageMap = list<LineDetails*>() ;
+					loopx=0;
+
 					for (int it = 0; it <4; it++) {
-						int stage_increment = 0;
-						for (int i_it = 0; i_it <= it; i_it++ ){
-							listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]+stage_increment), getRatio(stageMapX[it]+5), getRatio(stageMapY[it]+stage_increment)));
-							stage_increment += 2;
+						for (int it = 0; it <4; it++) {
+							int stage_increment = 0;
+							for (int i_it = 0; i_it <= it; i_it++ ){
+								listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]+stage_increment), getRatio(stageMapX[it]+5), getRatio(stageMapY[it]+stage_increment)));
+								stage_increment += 2;
+							}
 						}
-					}
 
-					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]-2), getRatio(stageMapX[it]+4), getRatio(stageMapY[it]-2)));
-					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]-2), getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3)));
-					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3)));
-					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+4), getRatio(stageMapY[it]-2)));
-					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-4)));
-					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-4), getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3)));
-					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-4), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-4)));
+						listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]-2), getRatio(stageMapX[it]+4), getRatio(stageMapY[it]-2)));
+						listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]-2), getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3)));
+						listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3)));
+						listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+4), getRatio(stageMapY[it]-2)));
+						listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-4)));
+						listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-4), getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3)));
+						listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-4), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-4)));
+					}
+					break;
+				case 'n' : system("clear");
 				}
 			} else if (zoomScreen.getOriginX()<=stageMapX[3] && zoomScreen.getOriginX()+zoomScreen.getWidth()>=stageMapX[3] && zoomScreen.getOriginY()<=stageMapY[3] && zoomScreen.getOriginY()+zoomScreen.getHeight()>=stageMapY[3] && stages[0]==1 && stages[1]==1 && stages[2]==1) {
 				//YOU CAN'T ABORT THE MISSION
@@ -738,41 +771,53 @@ int main() {
 				}
 				usleep(1000000);
 				system("clear");
-				playUFO(4);
-				stages[3]=1;
-				//CLEAR ALL THE STAGE
-				system("clear");
-				stageMapX[0]=rand()%bigScreenWidth;
-				stageMapX[1]=rand()%bigScreenWidth;
-				stageMapX[2]=rand()%bigScreenWidth;
-				stageMapX[3]=rand()%bigScreenWidth;
-				stageMapX[4]=rand()%bigScreenWidth;
-				stageMapY[0]=rand()%bigScreenHeight;
-				stageMapY[1]=rand()%bigScreenHeight;
-				stageMapY[2]=rand()%bigScreenHeight;
-				stageMapY[3]=rand()%bigScreenHeight;
-				stageMapY[4]=rand()%bigScreenHeight;
-				listStageMap = list<LineDetails*>() ;
-				loopx=0;
+				cout<<"You can't abort the mission! Continue? (Y/N)"<<endl;
+				char inYes = getch();
+				//smallScreen.renderSmall(listLine, zoomScreen, bigScreen,0,0,0);
 
-				for (int it = 0; it <4; it++) {
+				//mvaddch(ya,xa,ch);
+				switch(inYes){
+				case 'y':
+					system("clear");
+					playUFO(4);
+					stages[3]=1;
+					//CLEAR ALL THE STAGE
+					system("clear");
+					stageMapX[0]=rand()%bigScreenWidth;
+					stageMapX[1]=rand()%bigScreenWidth;
+					stageMapX[2]=rand()%bigScreenWidth;
+					stageMapX[3]=rand()%bigScreenWidth;
+					stageMapX[4]=rand()%bigScreenWidth;
+					stageMapY[0]=rand()%bigScreenHeight;
+					stageMapY[1]=rand()%bigScreenHeight;
+					stageMapY[2]=rand()%bigScreenHeight;
+					stageMapY[3]=rand()%bigScreenHeight;
+					stageMapY[4]=rand()%bigScreenHeight;
+					listStageMap = list<LineDetails*>() ;
+					loopx=0;
+
 					for (int it = 0; it <4; it++) {
-						int stage_increment = 0;
-						for (int i_it = 0; i_it <= it; i_it++ ){
-							listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]+stage_increment), getRatio(stageMapX[it]+5), getRatio(stageMapY[it]+stage_increment)));
-							stage_increment += 2;
+						for (int it = 0; it <4; it++) {
+							int stage_increment = 0;
+							for (int i_it = 0; i_it <= it; i_it++ ){
+								listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]+stage_increment), getRatio(stageMapX[it]+5), getRatio(stageMapY[it]+stage_increment)));
+								stage_increment += 2;
+							}
 						}
-					}
 
-					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]-2), getRatio(stageMapX[it]+4), getRatio(stageMapY[it]-2)));
-					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]-2), getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3)));
-					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3)));
-					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+4), getRatio(stageMapY[it]-2)));
-					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-4)));
-					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-4), getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3)));
-					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-4), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-4)));
+						listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]-2), getRatio(stageMapX[it]+4), getRatio(stageMapY[it]-2)));
+						listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]-2), getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3)));
+						listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3)));
+						listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+4), getRatio(stageMapY[it]-2)));
+						listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-4)));
+						listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-4), getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3)));
+						listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-4), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-4)));
+					}
+					break;
+				case 'n' : system("clear");
 				}
 			} else {
+
 				//YOU'RE NOT READYg
 				list<LineDetails*> listLineStage1;
 				fstream filestage("notready.txt", std::ios_base::in);
