@@ -35,7 +35,7 @@ void printWords(LineDetails *it,Line lineManager,int movex,int movey){
 		//cout<<"this is newx1 " << newx1<<endl;
 		//cout<<"this is newx2 " << newx2<<endl;
 		//cout<<"this is newy1 " << newy1<<endl;
-		//cout<<"this is newy2 " << newy2<<endl;		
+		//cout<<"this is newy2 " << newy2<<endl;
 			// draw line
 		lineManager.insertLine(newx1, newy1, newx2, newy2, 255, 255, 255);
 }
@@ -46,7 +46,7 @@ int main() {
 	list<LineDetails*> listLineUFO;
 	fstream fileufo("UFOITB.txt", std::ios_base::in);
 	list<int> intListUfo;
-	
+
 	int yow;
 	Line lineManager;
    	while (fileufo >> yow){
@@ -56,7 +56,7 @@ int main() {
 	fileufo.close();
 
         int* tempz = new int[4];
-    
+
 	int loopz = 0;
     	for (std::list<int>::iterator it = intListUfo.begin(); it != intListUfo.end(); ++it) {
 		tempz[loopz] = *it;
@@ -69,7 +69,7 @@ int main() {
 	list<LineDetails*> listLinePlay;
 	fstream fileplay("letsplay.txt", std::ios_base::in);
 	list<int> intListPlay;
-	
+
 	int moveline;
 	//Line lineManager;
    	while (fileplay >> moveline){
@@ -79,7 +79,7 @@ int main() {
 	fileplay.close();
 
         int* tempmove = new int[4];
-    
+
 	int loopmove = 0;
     	for (std::list<int>::iterator it = intListPlay.begin(); it != intListPlay.end(); ++it) {
 		tempmove[loopmove] = *it;
@@ -97,11 +97,11 @@ int main() {
 			printWords((*it),lineManager,0,0);
 			//cout<<*it<<endl;
 		}
-		//ANIMATION LETS PLAY		
+		//ANIMATION LETS PLAY
 		int cekwords=0;
 		if (until==1) {
 			for(list<LineDetails*>::iterator it = listLinePlay.begin(); it != listLinePlay.end(); it++) {
-				cekwords++;				
+				cekwords++;
 				printWords((*it),lineManager,100,100);
 				if (cekwords>5){
 					break;
@@ -110,7 +110,7 @@ int main() {
 			}
 		} else if (until==2) {
 			for(list<LineDetails*>::iterator it = listLinePlay.begin(); it != listLinePlay.end(); it++) {
-				cekwords++;				
+				cekwords++;
 				printWords((*it),lineManager,100,100);
 				if (cekwords>10){
 					break;
@@ -120,7 +120,7 @@ int main() {
 
 		} else if (until==3) {
 			for(list<LineDetails*>::iterator it = listLinePlay.begin(); it != listLinePlay.end(); it++) {
-				cekwords++;				
+				cekwords++;
 				printWords((*it),lineManager,100,100);
 				if (cekwords>15){
 					break;
@@ -129,7 +129,7 @@ int main() {
 			}
 		} else if (until==4) {
 			for(list<LineDetails*>::iterator it = listLinePlay.begin(); it != listLinePlay.end(); it++) {
-				cekwords++;				
+				cekwords++;
 				printWords((*it),lineManager,100,100);
 				if (cekwords>20){
 					break;
@@ -152,7 +152,7 @@ int main() {
 	list<LineDetails*> listLineStage1;
 	fstream filestage("stage1.txt", std::ios_base::in);
 	list<int> intListStage1;
-	
+
 	int movestage1;
 //	Line lineManager;
    	while (filestage >> movestage1){
@@ -162,7 +162,7 @@ int main() {
 	filestage.close();
 
         int* tempstage1 = new int[4];
-    
+
 	int loopstage1 = 0;
     	for (std::list<int>::iterator it = intListStage1.begin(); it != intListStage1.end(); ++it) {
 		tempstage1[loopstage1] = *it;
@@ -175,7 +175,7 @@ int main() {
 	list<LineDetails*> listLineStage2;
 	fstream filestage2("stage2.txt", std::ios_base::in);
 	list<int> intListStage2;
-	
+
 	int movestage2;
 //	Line lineManager;
    	while (filestage2 >> movestage2){
@@ -185,7 +185,7 @@ int main() {
 	filestage2.close();
 
         int* tempstage2 = new int[4];
-    
+
 	int loopstage2 = 0;
     	for (std::list<int>::iterator it = intListStage2.begin(); it != intListStage2.end(); ++it) {
 		tempstage2[loopstage2] = *it;
@@ -207,7 +207,7 @@ int main() {
 	filestage3.close();
 
         int* tempstage3 = new int[4];
-    
+
 	int loopstage3 = 0;
     	for (std::list<int>::iterator it = intListStage3.begin(); it != intListStage3.end(); ++it) {
 		tempstage3[loopstage3] = *it;
@@ -216,7 +216,7 @@ int main() {
 			listLineStage3.push_back(new LineDetails(getRatio(tempstage3[0]), getRatio(tempstage3[1]), getRatio(tempstage3[2]), getRatio(tempstage3[3])));
 			loopstage3 = 0;
 		}
-	}	
+	}
 	list<LineDetails*> listLineStage4;
 	fstream filestage4("stage4.txt", std::ios_base::in);
 	list<int> intListStage4;
@@ -229,7 +229,7 @@ int main() {
 	filestage4.close();
 
         int* tempstage4 = new int[4];
-    
+
 	int loopstage4 = 0;
     	for (std::list<int>::iterator it = intListStage4.begin(); it != intListStage4.end(); ++it) {
 		tempstage4[loopstage4] = *it;
@@ -238,22 +238,22 @@ int main() {
 			listLineStage4.push_back(new LineDetails(getRatio(tempstage4[0]), getRatio(tempstage4[1]), getRatio(tempstage4[2]), getRatio(tempstage4[3])));
 			loopstage4 = 0;
 		}
-	}	
-	
+	}
+
 	int stages[5];
 	stages[0]=0;
 	stages[1]=0;
 	stages[2]=0;
 	stages[3]=0;
-	
+
 	int varZoom = 3;
 	// Big screen
 	// !!! width:height ratio = 4:3
 	int bigScreenWidth = 415;
 	int bigScreenHeight = 415;
-	srand(time(NULL));	
+	srand(time(NULL));
 	Screen bigScreen = Screen(0, 0, bigScreenWidth, bigScreenHeight);
-	//RANDOM STAGE POSITION	
+	//RANDOM STAGE POSITION
 	int stageMapX[5];
 	stageMapX[0]=rand()%bigScreenWidth;
 	stageMapX[1]=rand()%bigScreenWidth;
@@ -282,6 +282,15 @@ int main() {
 		cout<<getRatio(stageMapY[it]+5)<<endl;
 		cout<<endl;
 		listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]), getRatio(stageMapX[it]+5), getRatio(stageMapY[it])));
+
+		listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]-2), getRatio(stageMapX[it]+4), getRatio(stageMapY[it]-2)));
+		listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]-2), getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3)));
+		listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3)));
+		listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+4), getRatio(stageMapY[it]-2)));
+		listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-4)));
+		listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-4), getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3)));
+		listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-4), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-4)));
+
 		//listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+5), getRatio(stageMapY[it]), getRatio(stageMapX[it]), getRatio(stageMapY[it])+5));
 	}
 	cout<<"TES";
@@ -289,17 +298,17 @@ int main() {
 	// Small screen
 	// !!! its size is relative to bigScreen
 	int smallScreenWidth = bigScreenWidth/3;
-	int smallScreenHeight = bigScreenHeight/3;	
+	int smallScreenHeight = bigScreenHeight/3;
 	Screen smallScreen = Screen(bigScreenWidth, bigScreenHeight-smallScreenHeight, smallScreenWidth, smallScreenHeight);
-	
+
 	//ZOOM Screen
 	// size relative to bigscreen
 	int zoomScreenWidth = bigScreenWidth/3;
-	int zoomScreenHeight = bigScreenHeight/3;	
+	int zoomScreenHeight = bigScreenHeight/3;
 	Screen zoomScreen = Screen(0, 0, zoomScreenWidth, zoomScreenHeight);
-	int xa = 0; 
+	int xa = 0;
 	int ya = 0;
-	
+
 	//List of LineDetails
 	int plus=0;
 	//LineDetails is 2 point defining the line.
@@ -312,20 +321,20 @@ int main() {
 	bool treeDisplay = 1;
 	bool pathDisplay = 1;
 	bool flowerDisplay = 1;
-	
+
 	//read from file to built ITB depan
 	fstream myfile("coordinat.txt", std::ios_base::in);
-	
+
 	list<int> intList;
-	
+
     int a;
     while (myfile >> a)
     {
         intList.push_back(a);
     }
-    
+
     int* temp = new int[4];
-    
+
     int loop = 0;
     for (std::list<int>::iterator it = intList.begin(); it != intList.end(); ++it) {
 		temp[loop] = *it;
@@ -337,20 +346,20 @@ int main() {
 	}
 
 	myfile.close();
-	
+
 
 	// DRAW TREE
 	fstream treefile("coordinate_tree.txt",std::ios_base::in);
 	list<int> intTreeList;
-	
+
     int b;
     while (treefile >> b)
     {
         intTreeList.push_back(b);
     }
-    
+
     int* tempT = new int[2];
-    
+
     loop = 0;
     for (std::list<int>::iterator it = intTreeList.begin(); it != intTreeList.end(); ++it) {
 		tempT[loop] = *it;
@@ -362,22 +371,22 @@ int main() {
 			listTree.push_back(new LineDetails(getRatio(tempT[0]+5), getRatio(tempT[1]), getRatio(tempT[0]-5), getRatio(tempT[1])));
 			loop = 0;
 		}
-	}	
+	}
 
 	treefile.close();
-	
+
 	//Draw Path
 	fstream pathfile("coordinat_path.txt", std::ios_base::in);
 
 	list<int> intListP;
-	
+
 	int c;
     while (pathfile >> c)
     {
         intListP.push_back(c);
     }
 
-    
+
 	loop = 0;
     for (std::list<int>::iterator it = intListP.begin(); it != intListP.end(); ++it) {
 		temp[loop] = *it;
@@ -393,14 +402,14 @@ int main() {
 	fstream flowerfile("coordinat_flower.txt", std::ios_base::in);
 
 	list<int> intListF;
-	
+
 	int d;
     while (flowerfile >> d)
     {
         intListF.push_back(d);
     }
 
-    
+
 	loop = 0;
     for (std::list<int>::iterator it = intListF.begin(); it != intListF.end(); ++it) {
 		temp[loop] = *it;
@@ -412,41 +421,41 @@ int main() {
 	}
 
 	flowerfile.close();
-	
+
 	//Next Step
-	system("clear"); 
+	system("clear");
 	initscr();
 	keypad(stdscr,TRUE);
 	noecho();
 	char ch;
 	while(1) {
-		
+
 		system("clear");
-		cout<<"                                                     Your Position-> X : "; 		
-		cout<<zoomScreen.getOriginX();		
+		cout<<"                                                     Your Position-> X : ";
+		cout<<zoomScreen.getOriginX();
 		cout<<" Y : ";
 		//cout<<zoomScreen.getOriginX()+zoomScreen.getWidth()<<endl;
 		//cout<<stageMapX[0]<<endl;
 		cout<<zoomScreen.getOriginY()<<endl;
-		/*cout<<"Stage 1-> X : "; 		
-		cout<<stageMapX[0];		
+		/*cout<<"Stage 1-> X : ";
+		cout<<stageMapX[0];
 		cout<<" Y : ";
-		
+
 		cout<<stageMapY[0]<<endl;
-		cout<<"Stage 2-> X : "; 		
-		cout<<stageMapX[1];		
+		cout<<"Stage 2-> X : ";
+		cout<<stageMapX[1];
 		cout<<" Y : ";
-		
+
 		cout<<stageMapY[1]<<endl;
-		cout<<"                                          Stage 3-> X : "; 		
-		cout<<stageMapX[2];		
+		cout<<"                                          Stage 3-> X : ";
+		cout<<stageMapX[2];
 		cout<<" Y : ";
-		
+
 		cout<<stageMapY[2]<<endl;
-		cout<<"                                          Stage 4-> X : "; 		
-		cout<<stageMapX[3];		
+		cout<<"                                          Stage 4-> X : ";
+		cout<<stageMapX[3];
 		cout<<" Y : ";
-		
+
 		cout<<stageMapY[3]<<endl;*/
 //		cout<<zoomScreen.getOriginY()+zoomScreen.getHeight()<<endl;
 //		cout<<stageMapY[0]<<endl;
@@ -457,13 +466,13 @@ int main() {
 				//bigScreen.renderLine((*it),0,255,255);
 				//NOT SHOWN IN BIGSCREEN
 			}
-			smallScreen.renderSmall(listStageMap, zoomScreen, bigScreen,0,255,255);			
+			smallScreen.renderSmall(listStageMap, zoomScreen, bigScreen,0,255,255);
 		}
 		if (lineDisplay){
 			for(list<LineDetails*>::iterator it = listLine.begin(); it != listLine.end(); it++) {
 				bigScreen.renderLine((*it),255,255,255);
 			}
-			smallScreen.renderSmall(listLine, zoomScreen, bigScreen,255,255,255);			
+			smallScreen.renderSmall(listLine, zoomScreen, bigScreen,255,255,255);
 		}
 		if (treeDisplay) {
 			for(list<LineDetails*>::iterator it = listTree.begin(); it != listTree.end(); it++) {
@@ -488,11 +497,11 @@ int main() {
 		zoomScreen.renderBorder();
 		ch = getch();
 		//smallScreen.renderSmall(listLine, zoomScreen, bigScreen,0,0,0);
-		
-		//mvaddch(ya,xa,ch);		
+
+		//mvaddch(ya,xa,ch);
 		switch(ch){
 		case 'a':
-		  if (xa>0) { 
+		  if (xa>0) {
 		  xa--;
 		  zoomScreen.renderBorderCol(0,0,0);
 		  zoomScreen.changeOrigin(xa,ya);
@@ -524,7 +533,7 @@ int main() {
 			zoomScreen.renderBorderCol(0,0,0);
 			zoomScreen.changeOrigin(xa,ya);
 			zoomScreen.renderBorder();
-		  }		
+		  }
 		break;
 		case 'i':
 		//smallScreen.renderSmall(listLine, zoomScreen, bigScreen,0,0,0);
@@ -547,7 +556,7 @@ int main() {
 		  else {
 		  }
 		  zoomScreenWidth = bigScreenWidth/varZoom;
-		  zoomScreenHeight = bigScreenHeight/varZoom;	
+		  zoomScreenHeight = bigScreenHeight/varZoom;
 		  zoomScreen = Screen(xa, ya, zoomScreenWidth, zoomScreenHeight);
 		break;
 		case 'o':
@@ -571,7 +580,7 @@ int main() {
 		  }
 		  zoomScreenWidth = bigScreenWidth/varZoom;
 		  zoomScreenHeight = bigScreenHeight/varZoom;
-		  zoomScreen = Screen(xa, ya, zoomScreenWidth, zoomScreenHeight);		
+		  zoomScreen = Screen(xa, ya, zoomScreenWidth, zoomScreenHeight);
 		break;
 		case 'x':
 			if (treeDisplay == 1){
@@ -587,7 +596,7 @@ int main() {
 			}
 			else {
 				pathDisplay = 1;
-			}	
+			}
 		break;
 		case 'v':
 			if (flowerDisplay == 1){
@@ -595,9 +604,9 @@ int main() {
 			}
 			else {
 				flowerDisplay = 1;
-			}	
+			}
 		break;
-		
+
 		case 'e':
 			// STAGE 1
 			if (zoomScreen.getOriginX()<=stageMapX[0] && zoomScreen.getOriginX()+zoomScreen.getWidth()>=stageMapX[0] && zoomScreen.getOriginY()<=stageMapY[0] && zoomScreen.getOriginY()+zoomScreen.getHeight()>=stageMapY[0]) {
@@ -610,7 +619,7 @@ int main() {
 				usleep(1000000);
 				system("clear");
 				playUFO(1);
-				stages[0]=1;				
+				stages[0]=1;
 				system("clear");
 				stageMapX[0]=rand()%bigScreenWidth;
 				stageMapX[1]=rand()%bigScreenWidth;
@@ -649,7 +658,7 @@ int main() {
 				usleep(1000000);
 				system("clear");
 				playUFO(2);
-				stages[1]=1;				
+				stages[1]=1;
 				system("clear");
 				stageMapX[0]=rand()%bigScreenWidth;
 				stageMapX[1]=rand()%bigScreenWidth;
@@ -677,7 +686,7 @@ int main() {
 					cout<<endl;
 					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]), getRatio(stageMapX[it]+5), getRatio(stageMapY[it])));
 					//listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+5), getRatio(stageMapY[it]), getRatio(stageMapX[it]), getRatio(stageMapY[it])+5));
-				}				
+				}
 			} else if (zoomScreen.getOriginX()<=stageMapX[2] && zoomScreen.getOriginX()+zoomScreen.getWidth()>=stageMapX[2] && zoomScreen.getOriginY()<=stageMapY[2] && zoomScreen.getOriginY()+zoomScreen.getHeight()>=stageMapY[2] && stages[0]==1 && stages[1]==1) {
 				//YOU CAN'T ABORT THE MISSION
 				system("clear");
@@ -688,7 +697,7 @@ int main() {
 				usleep(1000000);
 				system("clear");
 				playUFO(3);
-				stages[2]=1;				
+				stages[2]=1;
 				system("clear");
 				stageMapX[0]=rand()%bigScreenWidth;
 				stageMapX[1]=rand()%bigScreenWidth;
@@ -716,7 +725,7 @@ int main() {
 					cout<<endl;
 					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]), getRatio(stageMapX[it]+5), getRatio(stageMapY[it])));
 					//listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+5), getRatio(stageMapY[it]), getRatio(stageMapX[it]), getRatio(stageMapY[it])+5));
-				}				
+				}
 			} else if (zoomScreen.getOriginX()<=stageMapX[3] && zoomScreen.getOriginX()+zoomScreen.getWidth()>=stageMapX[3] && zoomScreen.getOriginY()<=stageMapY[3] && zoomScreen.getOriginY()+zoomScreen.getHeight()>=stageMapY[3] && stages[0]==1 && stages[1]==1 && stages[2]==1) {
 				//YOU CAN'T ABORT THE MISSION
 				system("clear");
@@ -724,11 +733,11 @@ int main() {
 					printWords((*it),lineManager,100,100);
 					//cout<<*it<<endl;
 				}
-				usleep(1000000);		
+				usleep(1000000);
 				system("clear");
 				playUFO(4);
-				stages[3]=1;	
-				//CLEAR ALL THE STAGE			
+				stages[3]=1;
+				//CLEAR ALL THE STAGE
 				system("clear");
 				stageMapX[0]=rand()%bigScreenWidth;
 				stageMapX[1]=rand()%bigScreenWidth;
@@ -756,16 +765,16 @@ int main() {
 					cout<<endl;
 					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]), getRatio(stageMapX[it]+5), getRatio(stageMapY[it])));
 					//listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+5), getRatio(stageMapY[it]), getRatio(stageMapX[it]), getRatio(stageMapY[it])+5));
-				}				
+				}
 			} else {
 			//YOU'RE NOT READY
-			
+
 			}
 		}
 		refresh();
 	}
 	delete []temp;
 	delete []tempT;
-	
+
 	return 0;
 }
