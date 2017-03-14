@@ -271,17 +271,13 @@ int main() {
 
 	cout<<"TES";
 	for (int it = 0; it <4; it++) {
-		cout<<getRatio(stageMapX[it])<<endl;
-		cout<<getRatio(stageMapY[it])<<endl;
-		cout<<getRatio(stageMapX[it]+5)<<endl;
-		cout<<getRatio(stageMapY[it]+5)<<endl;
-		cout<<endl;
-		cout<<getRatio(stageMapX[it]+5)<<endl;
-		cout<<getRatio(stageMapY[it])<<endl;
-		cout<<getRatio(stageMapX[it])<<endl;
-		cout<<getRatio(stageMapY[it]+5)<<endl;
-		cout<<endl;
-		listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]), getRatio(stageMapX[it]+5), getRatio(stageMapY[it])));
+		for (int it = 0; it <4; it++) {
+			int stage_increment = 0;
+			for (int i_it = 0; i_it <= it; i_it++ ){
+				listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]+stage_increment), getRatio(stageMapX[it]+5), getRatio(stageMapY[it]+stage_increment)));
+				stage_increment += 2;
+			}
+		}
 
 		listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]-2), getRatio(stageMapX[it]+4), getRatio(stageMapY[it]-2)));
 		listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]-2), getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3)));
@@ -290,8 +286,6 @@ int main() {
 		listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-4)));
 		listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-4), getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3)));
 		listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-4), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-4)));
-
-		//listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+5), getRatio(stageMapY[it]), getRatio(stageMapX[it]), getRatio(stageMapY[it])+5));
 	}
 	cout<<"TES";
 //	usleep(200000000);
@@ -633,20 +627,22 @@ int main() {
 				stageMapY[4]=rand()%bigScreenHeight;
 				listStageMap = list<LineDetails*>() ;
 				loopx=0;
-
 				for (int it = 0; it <4; it++) {
-					cout<<getRatio(stageMapX[it])<<endl;
-					cout<<getRatio(stageMapY[it])<<endl;
-					cout<<getRatio(stageMapX[it]+5)<<endl;
-					cout<<getRatio(stageMapY[it]+5)<<endl;
-					cout<<endl;
-					cout<<getRatio(stageMapX[it]+5)<<endl;
-					cout<<getRatio(stageMapY[it])<<endl;
-					cout<<getRatio(stageMapX[it])<<endl;
-					cout<<getRatio(stageMapY[it]+5)<<endl;
-					cout<<endl;
-					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]), getRatio(stageMapX[it]+5), getRatio(stageMapY[it])));
-					//listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+5), getRatio(stageMapY[it]), getRatio(stageMapX[it]), getRatio(stageMapY[it])+5));
+					for (int it = 0; it <4; it++) {
+						int stage_increment = 0;
+						for (int i_it = 0; i_it <= it; i_it++ ){
+							listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]+stage_increment), getRatio(stageMapX[it]+5), getRatio(stageMapY[it]+stage_increment)));
+							stage_increment += 2;
+						}
+					}
+
+					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]-2), getRatio(stageMapX[it]+4), getRatio(stageMapY[it]-2)));
+					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]-2), getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3)));
+					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3)));
+					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+4), getRatio(stageMapY[it]-2)));
+					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-4)));
+					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-4), getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3)));
+					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-4), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-4)));
 				}
 			} else if (zoomScreen.getOriginX()<=stageMapX[1] && zoomScreen.getOriginX()+zoomScreen.getWidth()>=stageMapX[1] && zoomScreen.getOriginY()<=stageMapY[1] && zoomScreen.getOriginY()+zoomScreen.getHeight()>=stageMapY[1] && stages[0]==1) {
 				//YOU CAN'T ABORT THE MISSION
@@ -674,18 +670,21 @@ int main() {
 				loopx=0;
 
 				for (int it = 0; it <4; it++) {
-					cout<<getRatio(stageMapX[it])<<endl;
-					cout<<getRatio(stageMapY[it])<<endl;
-					cout<<getRatio(stageMapX[it]+5)<<endl;
-					cout<<getRatio(stageMapY[it]+5)<<endl;
-					cout<<endl;
-					cout<<getRatio(stageMapX[it]+5)<<endl;
-					cout<<getRatio(stageMapY[it])<<endl;
-					cout<<getRatio(stageMapX[it])<<endl;
-					cout<<getRatio(stageMapY[it]+5)<<endl;
-					cout<<endl;
-					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]), getRatio(stageMapX[it]+5), getRatio(stageMapY[it])));
-					//listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+5), getRatio(stageMapY[it]), getRatio(stageMapX[it]), getRatio(stageMapY[it])+5));
+					for (int it = 0; it <4; it++) {
+						int stage_increment = 0;
+						for (int i_it = 0; i_it <= it; i_it++ ){
+							listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]+stage_increment), getRatio(stageMapX[it]+5), getRatio(stageMapY[it]+stage_increment)));
+							stage_increment += 2;
+						}
+					}
+
+					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]-2), getRatio(stageMapX[it]+4), getRatio(stageMapY[it]-2)));
+					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]-2), getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3)));
+					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3)));
+					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+4), getRatio(stageMapY[it]-2)));
+					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-4)));
+					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-4), getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3)));
+					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-4), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-4)));
 				}
 			} else if (zoomScreen.getOriginX()<=stageMapX[2] && zoomScreen.getOriginX()+zoomScreen.getWidth()>=stageMapX[2] && zoomScreen.getOriginY()<=stageMapY[2] && zoomScreen.getOriginY()+zoomScreen.getHeight()>=stageMapY[2] && stages[0]==1 && stages[1]==1) {
 				//YOU CAN'T ABORT THE MISSION
@@ -713,18 +712,21 @@ int main() {
 				loopx=0;
 
 				for (int it = 0; it <4; it++) {
-					cout<<getRatio(stageMapX[it])<<endl;
-					cout<<getRatio(stageMapY[it])<<endl;
-					cout<<getRatio(stageMapX[it]+5)<<endl;
-					cout<<getRatio(stageMapY[it]+5)<<endl;
-					cout<<endl;
-					cout<<getRatio(stageMapX[it]+5)<<endl;
-					cout<<getRatio(stageMapY[it])<<endl;
-					cout<<getRatio(stageMapX[it])<<endl;
-					cout<<getRatio(stageMapY[it]+5)<<endl;
-					cout<<endl;
-					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]), getRatio(stageMapX[it]+5), getRatio(stageMapY[it])));
-					//listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+5), getRatio(stageMapY[it]), getRatio(stageMapX[it]), getRatio(stageMapY[it])+5));
+					for (int it = 0; it <4; it++) {
+						int stage_increment = 0;
+						for (int i_it = 0; i_it <= it; i_it++ ){
+							listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]+stage_increment), getRatio(stageMapX[it]+5), getRatio(stageMapY[it]+stage_increment)));
+							stage_increment += 2;
+						}
+					}
+
+					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]-2), getRatio(stageMapX[it]+4), getRatio(stageMapY[it]-2)));
+					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]-2), getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3)));
+					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3)));
+					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+4), getRatio(stageMapY[it]-2)));
+					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-4)));
+					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-4), getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3)));
+					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-4), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-4)));
 				}
 			} else if (zoomScreen.getOriginX()<=stageMapX[3] && zoomScreen.getOriginX()+zoomScreen.getWidth()>=stageMapX[3] && zoomScreen.getOriginY()<=stageMapY[3] && zoomScreen.getOriginY()+zoomScreen.getHeight()>=stageMapY[3] && stages[0]==1 && stages[1]==1 && stages[2]==1) {
 				//YOU CAN'T ABORT THE MISSION
@@ -753,18 +755,21 @@ int main() {
 				loopx=0;
 
 				for (int it = 0; it <4; it++) {
-					cout<<getRatio(stageMapX[it])<<endl;
-					cout<<getRatio(stageMapY[it])<<endl;
-					cout<<getRatio(stageMapX[it]+5)<<endl;
-					cout<<getRatio(stageMapY[it]+5)<<endl;
-					cout<<endl;
-					cout<<getRatio(stageMapX[it]+5)<<endl;
-					cout<<getRatio(stageMapY[it])<<endl;
-					cout<<getRatio(stageMapX[it])<<endl;
-					cout<<getRatio(stageMapY[it]+5)<<endl;
-					cout<<endl;
-					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]), getRatio(stageMapX[it]+5), getRatio(stageMapY[it])));
-					//listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+5), getRatio(stageMapY[it]), getRatio(stageMapX[it]), getRatio(stageMapY[it])+5));
+					for (int it = 0; it <4; it++) {
+						int stage_increment = 0;
+						for (int i_it = 0; i_it <= it; i_it++ ){
+							listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]+stage_increment), getRatio(stageMapX[it]+5), getRatio(stageMapY[it]+stage_increment)));
+							stage_increment += 2;
+						}
+					}
+
+					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]-2), getRatio(stageMapX[it]+4), getRatio(stageMapY[it]-2)));
+					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]), getRatio(stageMapY[it]-2), getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3)));
+					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3)));
+					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+4), getRatio(stageMapY[it]-2)));
+					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-3), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-4)));
+					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-4), getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-3)));
+					listStageMap.push_back(new LineDetails(getRatio(stageMapX[it]+1), getRatio(stageMapY[it]-4), getRatio(stageMapX[it]+3), getRatio(stageMapY[it]-4)));
 				}
 			} else {
 			//YOU'RE NOT READY
