@@ -797,7 +797,8 @@ int playUFO(int stage) {
         DrawToScreen(); 
         usleep(50000);
     } while (!exploded);
-    thread1.detach();
+    thread1.join();
+    bullets.clear();
 	
 	/*int xawal1 = xawal;
 	int xawal2 = xawal;
